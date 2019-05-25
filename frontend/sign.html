@@ -1,7 +1,7 @@
 <html lang="en">
   <head>
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="metrohacks2019-1558802601491.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="127106755738-6anilqcl7g4r1qrohiigrnmorh6s2q48.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" href="/signstyle.css">
   </head>
@@ -23,6 +23,15 @@
         console.log("ID Token: " + id_token);
       }
     </script>
-    <input id="Sign in with Google" type="button" value="clickme" onclick=".signIn();" />
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+      function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+      }
+    </script>
   </body>
 </html>
