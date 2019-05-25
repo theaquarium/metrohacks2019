@@ -36,7 +36,11 @@
       }
     </script>
     <h1>Level <%= user.level %></h1>
+    <div id="myProgress">
+      <div id="myBar"></div>
+    </div>
     <img src="<%= user.profileImgUrl %>" alt="Your account information" class="account centerimg">
+    <div class='numbers percent'>10 points</div>
     <h1><%= user.name %></h1>
     <div class="stats">
         You have <div class=numbers><%= user.points %></div> points
