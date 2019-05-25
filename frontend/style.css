@@ -6,10 +6,6 @@ html { font-family: 'Inter', sans-serif; }
 h1 {
   text-align: center;
 }
-.account {
-  width: 350px;
-  height: 350px;
-}
 .centerimg {
   display: block;
   width: 500px;
@@ -56,9 +52,12 @@ h1 {
 }
 .percent{
   text-align: center;
-  margin-top: 500px;
 }
 .bar {
   width: 33%;
   height:600px;
+}
+.prof {
+  display: flex;
+  justify-content: center;
 }

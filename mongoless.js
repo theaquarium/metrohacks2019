@@ -50,7 +50,7 @@ app.get('/profile', (req, res) => {
                 watts: 124,
                 rank: 2521,
                 oldRank: 21894,
-                profileImgUrl: "https://library.kissclipart.com/20180830/luq/kissclipart-circle-frames-no-background-clipart-clip-art-aedca8aeb4ab011a.jpg",
+                profileImgUrl: "http://www.transparentpng.com/thumb/circle-png/n7wq5b-circle-transparent-background.png",
             },
         }
     );
