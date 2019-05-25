@@ -39,8 +39,11 @@
     <div id="myProgress">
       <div id="myBar"></div>
     </div>
-    <img src="<%= user.profileImgUrl %>" alt="Your account information" class="account centerimg">
-    <div class='numbers percent'>10 points</div>
+    <div>
+      <img class='centerimg' src="<%= user.profileImgUrl %>" alt="Your account information" class="centerimg">
+      <img src="/T1D-Blue-Circle--1000x1000.png" alt="Your account information" class="account">
+    </div>
+    <div class='numbers percent'>100 points</div>
     <h1><%= user.name %></h1>
     <div class="stats">
         You have <div class=numbers><%= user.points %></div> points
