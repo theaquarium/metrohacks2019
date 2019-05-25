@@ -9,6 +9,7 @@
   "private": true,
   "dependencies": {
     "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.1",
     "express": "^4.17.0",
     "mongodb": "^3.2.6",
     "uuid": "^3.3.2"

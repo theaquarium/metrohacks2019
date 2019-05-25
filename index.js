@@ -10,6 +10,7 @@ const port = 5849;
 const url = 'mongodb://localhost:27017/environment-userdb';
 
 app.use(express.json());
+app.set('view engine', 'ejs');
 app.use(express.static('frontend'));
 app.use(CookieParser('9442b610-c141-4de5-9928-f1cc63dbdc72')); // Cookie Secret (SECRET)
 
@@ -41,14 +42,24 @@ MongoClient.connect(url, function(err, db) {
         }
         if (token) {
             res.cookie('token', token, { path: '/', secure: true });
-            res.sendStatus(200);
+            res.redirect('/profile');
         } else {
             res.sendStatus(500);
         }
     });
 
     app.get('/profile', (req, res) => {
-        res.sendFile(path.resolve('./frontend/stuff.html'));
+        res.render(path.resolve('./frontend/profile.ejs'), 
+        {
+            user: {
+                level: 1,
+                points: 25,
+                oldRank: 255,
+                rank: 25,
+                name: 'Jeffery Smithologist',
+                profileImgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/1024px-Circle_-_black_simple.svg.png",
+            },
+        });
     });
 
     app.listen(port, () => console.log(`Server running on port ${port}...`));

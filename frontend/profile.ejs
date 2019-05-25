@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Climate Connections</title>
+    <link href=/style.css rel=stylesheet type=text/css>
+  </head>
+  <body>
+    <h1>Level <%= user.level %></h1>
+    <img src="<%= user.profileImgUrl %>" alt="Your account information" class="account centerimg">
+    <h1><%= user.name %></h1>
+    <div class="stats">
+        You have <div class=numbers><%= user.points %></div> points
+    </div>
+    <div class="stats">
+        You used <div class=numbers><%= user.points %></div> Watts today
+    </div>
+    <div class="stats">
+        You moved up <div class=numbers><%= user.oldRank - user.rank %></div>spots to rank<div class=numbers><%= user.rank %></div>
+    </div>
+  </body>
+</html>
