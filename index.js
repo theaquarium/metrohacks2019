@@ -33,7 +33,7 @@ MongoClient.connect(url, function(err, db) {
     app.post('/verify-user', (req, res) => {
         const json = res.json(req.body);
         let token;
-        if (google_token) {
+        if (json.google_token) {
             token = utils.verifyUser(db, json.google_token);
             if (!token) {
                 token = utils.addUser(db, google_token);
