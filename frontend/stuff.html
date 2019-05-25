@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PLACEHOLDER</title>
+    <link href='style.css' rel=stylesheet type=text/css>
+  </head>
+  <script type="text/javascript">
+    function move() {
+      var elem = document.getElementById("myBar");
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+        } else {
+          width++;
+          elem.style.width = width + '%';
+        }
+      }
+    }
+    function move() {
+      var elem = document.getElementById("myBar");
+      var width = 10;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+        } else {
+          width++;
+          elem.style.width = width + '%';
+          elem.innerHTML = width * 1 + '%';
+        }
+      }
+    }
+  </script>
+  <body>
+    <h1>Level 1</h1>
+    <div id="myProgress">
+      <div id="myBar"></div>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/1024px-Circle_-_black_simple.svg.png" alt="Your account information" class="account centerimg">
+    <div class='numbers percent'>10%</div>
+    <h1>Name</h1>
+    <div class="stats">
+      <div>You earned </div><div class=numbers> 696994 </div><div> points</div>
+    </div>
+    <div class="stats">
+      <div>You used </div><div class=numbers> 696994 </div><div> watts today</div>
+    </div>
+    <div class="stats">
+      <div>You moved up </div><div class=numbers> 696994 </div><div>spots to rank</div><div class=numbers> 696994 </div>
+    </div>
+  </body>
+</html>
