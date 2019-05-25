@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+}
+.account {
+  width: 350px;
+  height: 350px;
+}
+.centerimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.center {
+  text-align: center;
+}
+.stats {
+  font-family: sans-serif;
+}
