@@ -6,6 +6,35 @@
     <link href=/style.css rel=stylesheet type=text/css>
   </head>
   <body>
+    <script type="text/javascript">
+      function move() {
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 10);
+        function frame() {
+          if (width >= 100) {
+            clearInterval(id);
+          } else {
+            width++;
+            elem.style.width = width + ' points';
+          }
+        }
+      }
+      function move() {
+        var elem = document.getElementById("myBar");
+        var width = 10;
+        var id = setInterval(frame, 10);
+        function frame() {
+          if (width >= 100) {
+            clearInterval(id);
+          } else {
+            width++;
+            elem.style.width = width + ' points';
+            elem.innerHTML = width * 1 + ' points';
+          }
+        }
+      }
+    </script>
     <h1>Level <%= user.level %></h1>
     <img src="<%= user.profileImgUrl %>" alt="Your account information" class="account centerimg">
     <h1><%= user.name %></h1>
