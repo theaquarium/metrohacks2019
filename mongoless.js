@@ -50,6 +50,7 @@ app.get('/profile', (req, res) => {
                 watts: 124,
                 rank: 2521,
                 oldRank: 21894,
+                profileImgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/1024px-Circle_-_black_simple.svg.png",
             },
         }
     );
