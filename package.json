@@ -8,6 +8,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "express": "^4.17.0"
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.0",
+    "mongodb": "^3.2.6",
+    "uuid": "^3.3.2"
   }
 }
