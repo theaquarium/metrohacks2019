@@ -1,0 +1,13 @@
+{
+  "name": "metrohacks2019",
+  "version": "1.0.0",
+  "description": "A platform to gamify environmental savings.",
+  "main": "index.js",
+  "repository": "https://github.com/theaquarium/metrohacks2019.git",
+  "author": "Peter Vashevko <peter@vashevko.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.0"
+  }
+}
