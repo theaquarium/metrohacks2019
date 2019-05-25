@@ -7,9 +7,9 @@
   </head>
   <body>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
     <script>
       function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
         const profile = googleUser.getBasicProfile();
         const id_token = googleUser.getAuthResponse().id_token;
         const data = {
@@ -18,14 +18,22 @@
           imgUrl: profile.getImageUrl(),
           token: id_token,
         };
-        function postData(url = "/verify-user", data = data) {
-          return fetch(url, {
+        console.log(JSON.stringify(data));
+        fetch('/verify-user', {
           method: 'POST',
-          body: JSON.stringify(data)
+          content
+          body: JSON.stringify(data),
         })
-        .then(response => response.json());
+        .then(response => {
+          console.log(response.status);
+        });
       }
-      $()
+      function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+      }
     </script>
   </body>
 </html>

@@ -10,6 +10,7 @@ const port = 5849;
 const url = 'mongodb://localhost:27017/environment-userdb';
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('frontend'));
 app.use(CookieParser('9442b610-c141-4de5-9928-f1cc63dbdc72')); // Cookie Secret (SECRET)
@@ -24,7 +25,7 @@ MongoClient.connect(url, function(err, db) {
     
     app.post('/report-powerstrip', (req, res) => {
         const json = res.json(req.body);
-
+        console.log(json);
     });
 
     app.get('/sign-in', (req, res) => {
@@ -32,34 +33,47 @@ MongoClient.connect(url, function(err, db) {
     });
 
     app.post('/verify-user', (req, res) => {
-        const json = res.json(req.body);
-        let token;
+        console.log('fjaskl');
+        const json = req;
+        console.log(json);
+        let user;
         if (json.google_token) {
-            token = utils.verifyUser(db, json.google_token);
-            if (!token) {
-                token = utils.addUser(db, google_token);
+            console.log('faaff');
+            user = utils.verifyUser(db, json.google_token);
+            console.log('mem', user);
+            if (!user) {
+                user = utils.addUser(db, google_token);
             }
+            console.log('mem2', user);
         }
-        if (token) {
-            res.cookie('token', token, { path: '/', secure: true });
+        if (user) {
+            console.log('dass');
+            res.cookie('token', user.token, { path: '/', secure: true });
+            res.cookie('id', user.id, { path: '/', secure: true });
             res.redirect('/profile');
         } else {
+            console.log('fdjs');
             res.sendStatus(500);
         }
     });
 
     app.get('/profile', (req, res) => {
-        res.render(path.resolve('./frontend/profile.ejs'), 
-        {
-            user: {
-                level: 1,
-                points: 25,
-                oldRank: 255,
-                rank: 25,
-                name: 'Jeffery Smithologist',
-                profileImgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/1024px-Circle_-_black_simple.svg.png",
-            },
-        });
+        const userId = req.signedCookies.id;
+        const userToken = req.signedCookies.token;
+        if (userId && userToken) {
+            const userData = utils.getUserData(db, userId, userToken);
+            if (userData) {
+                res.render(
+                    path.resolve('./frontend/profile.ejs'),
+                    {
+                        user: userData,
+                    });
+            } else {
+                res.redirect('/sign-in');
+            }
+        } else {
+            res.redirect('/sign-in');
+        }
     });
 
     app.listen(port, () => console.log(`Server running on port ${port}...`));

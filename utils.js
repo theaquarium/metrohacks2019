@@ -11,16 +11,27 @@ const addUser = (db, id) => {
         if (err) {
             return;
         } else {
-            return result.ops[0].token;
+            return { token: result.ops[0].token, id: result.ops[0].id };
         }
     });
 };
 
 const verifyUser = (db, id) => {
+    console.log('fsa');
     const collection = db.collection('users');
     const userFile = collection.findOne({ google_token: id });
     if (userFile) {
-        return userFile.token;
+        return { token: userFile.token, id: userFile.id };
+    } else {
+        return;
+    }
+};
+
+const getUserData = (db, id, token) => {
+    const collection = db.collection('users');
+    const userFile = collection.findOne({ google_token: id });
+    if (userFile) {
+        return { token: userFile.token, id: userFile.id };
     } else {
         return;
     }

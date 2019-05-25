@@ -40,7 +40,19 @@ app.post('/verify-user', (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-    res.sendFile(path.resolve('./frontend/stuff.html'));
+    res.render(
+        path.resolve('./frontend/profile.ejs'),
+        {
+            user: {
+                level: 1,
+                name: 'Johna Morandaons',
+                points: 100,
+                watts: 124,
+                rank: 2521,
+                oldRank: 21894,
+            },
+        }
+    );
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}...`));
