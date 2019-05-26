@@ -3,7 +3,7 @@ html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
 }
-h1 {
+.level {
   text-align: center;
 }
 .centerimg {
@@ -32,8 +32,69 @@ h1 {
   font-size: 14pt;
 }
 .center {
-  margin-left: 50%;
+  justify-content: center;
   width: 500px;
-  border: 3px solid green;
-  padding: 10px;
+  height: 500px;
+  position: relative;
+  z-index: 5;
+}
+.flex {
+  display: flex;
+  height: 550px;
+}
+.pie {
+  width: 550px; height: 550px;
+  border-radius: 50%;
+  background: grey;
+  background-image:
+  linear-gradient(to top, transparent 90%, #1e8feb 0);
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  left: 32%;
+}
+.space {
+  padding: 5px;
+}
+.points {
+  font-weight: bold;
+  text-align: center;
+  font-size: 25pt;
+}
+.bigNumber {
+  color: #1e8feb;
+}
+.flex2 {
+  display: flex;
+}
+.menu-container {
+ color: #fff;
+ background-color: #1e8feb;  /* Blue */
+ padding: 20px 0;
+ display: flex;
+ justify-content: center;
+}
+.menu {
+  width: 1350px;
+  display: flex;
+  justify-content: space-between;
+}
+.navigation {
+  border: 3px solid white;
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  border-radius: 15px;
+  height: auto;
+  width: auto;
+  font-size: 15pt;
+  margin-left: 10px;
+}
+.links {
+  display: flex;
+  justify-content:flex-start;
+}
+
+.login {
+  margin-left: 20px;
 }

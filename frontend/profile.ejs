@@ -6,37 +6,23 @@
     <link href=/style.css rel=stylesheet type=text/css>
   </head>
   <body>
-    <script type="text/javascript">
-      function move() {
-        var elem = document.getElementById("myBar");
-        var width = 1;
-        var id = setInterval(frame, 10);
-        function frame() {
-          if (width >= 100) {
-            clearInterval(id);
-          } else {
-            width++;
-            elem.style.width = width + ' points';
-          }
-        }
-      }
-      function move() {
-        var elem = document.getElementById("myBar");
-        var width = 10;
-        var id = setInterval(frame, 10);
-        function frame() {
-          if (width >= 100) {
-            clearInterval(id);
-          } else {
-            width++;
-            elem.style.width = width + ' points';
-            elem.innerHTML = width * 1 + ' points';
-          }
-        }
-      }
-    </script>
-    <h1>Level <%= user.level %></h1>
+    <div class="menu-container">
+      <div class="menu">
+        <div class="links">
+        <a class='navigation'href="#">Dashboard</a>
+        <a class='navigation'href="#">Profile</a>
+      </div>
+      <a class="login navigation"href="#">Sign In</a>
+    </div>
+    </div>
+
+    <h1 class=level>Level <%= user.level %></h1>
+    <div class="space"></div>
+    <div class=flex>
       <img class='center' src="<%= user.profileImgUrl %>" alt="Your account information">
+      <div class="pie"></div>
+    </div>
+    <div class=points> <div class="bigNumber">100</div>Points</div>
     <h1><%= user.name %></h1>
     <div class="stats">
         You have <div class=numbers><%= user.points %></div> points
