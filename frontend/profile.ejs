@@ -6,11 +6,6 @@
     <link href=/style.css rel=stylesheet type=text/css>
   </head>
   <body>
-    <script type="text/javascript">
-      let exp = <%= user.points %> / 6000;
-      var myElement = document.querySelector(".pie");
-      myElement.style.backgroundimage = "linear-gradient(to top, transparent 29%, #1e8feb 0);";
-    </script>
     <div class="menu-container">
       <div class="menu">
         <div class="links">
@@ -27,16 +22,18 @@
       <img class='center' src="<%= user.profileImgUrl %>" alt="Your account information">
       <div class="pie"></div>
     </div>
-    <div class=points> <div class="bigNumber"><%= user.points %></div>Points</div>
     <h1 class="level"><%= user.name %></h1>
+    <div class=points> <div class="bigNumber"><%= user.points %></div>Points</div>
     <div class="stats">
-        You have <div class=numbers><%= user.points %></div> points
+        You used <div class="numbers"><%= user.watts %></div> Watts today
     </div>
     <div class="stats">
-        You used <div class=numbers><%= user.watts %></div> Watts today
+        You moved up <div class="numbers"><%= user.oldRank - user.rank %></div>spots to rank<div class=numbers><%= user.rank %></div>
     </div>
-    <div class="stats">
-        You moved up <div class=numbers><%= user.oldRank - user.rank %></div>spots to rank<div class=numbers><%= user.rank %></div>
-    </div>
+    <script deferS>
+      let exp = 100 - (<%= user.levelpoints %> / (50*2^<%= user.level %>))*100;
+      var pie = document.getElementsByClassName("pie")[0];
+      pie.style.background = "linear-gradient(to top, gray " + exp + "%, #1e8feb 0)";
+    </script>
   </body>
 </html>
