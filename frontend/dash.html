@@ -8,66 +8,27 @@
   </head>
   <body>
     <div class="menu-container">
-      <div class="menu title">
+      <div class="menu">
         <div class="links">
-        <a class='navigation' href="/dashboard">Dashboard</a>
-        <a class='navigation' href="/profile">Profile</a>
+        <a class='top'href="/dashboard">Dashboard</a>
+        <a class='navigation'href="/profile">Profile</a>
+        <a class="navigation"href="/leaderboard">Leaderboard</a>
+        </div>
+      <p class="top navigation" href="#">Climate Connections</p>
+      <a class="navigation"href="#">Sign In</a>
+    </div>
+    </div>
+
+      <div class="box1">
+        <p class="title">Graph</p>
+        <div class="flex taskboard">
+        </div>
       </div>
-      <a class="login navigation"href="/sign-in">Sign In</a>
-    </div>
-    </div>
-    <h1 class="title">Dashboard</h1>
-    <div class="box1">
-      <p>Power Consumption</p>
-      <canvas id="powerconsumption" width="400" height="200"></canvas>
-    </div>
-    <div class="box2">
-      <p>Graph</p>
-      <canvas id="compostedtoday" width="400" height="200"></canvas>
-    </div>
-    <div class="box3">
-      <p>More Graph</p>
-      <canvas id="zerowastedays" width="400" height="200"></canvas>
-    </div>
-    <script>
-      var ctx = document.getElementById('myChart').getContext('2d');
-      var myChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-              datasets: [{
-                  label: '# of Votes',
-                  data: [
-                    
-                  ],
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)'
-                  ],
-                  borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)',
-                      'rgba(75, 192, 192, 1)',
-                      'rgba(153, 102, 255, 1)',
-                      'rgba(255, 159, 64, 1)'
-                  ],
-                  borderWidth: 1
-              }]
-          },
-          options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
-                      }
-                  }]
-              }
-          }
-      });
-    </script>
+      <div class="box2">
+        <p class="title">Graph</p>
+      </div>
+      <div class="box3">
+        <p class="title">More Graph</p>
+      </div>
   </body>
 </html>

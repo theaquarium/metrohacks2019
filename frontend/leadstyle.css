@@ -3,72 +3,28 @@ html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; margin: 0; }
 }
-.level {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-.centerimg {
-  display: block;
-  width: 500px;
-  height: 500px;
-  margin: 0 auto;
-  margin-bottom: -500px;
-}
-.center {
-  text-align: center;
-  display:inline-block;
-  margin: auto;
-  border-radius: 100%;
-}
-.stats {
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  margin: 10px;
-}
-.numbers {
-  color: #1e8feb;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-weight: bold;
-  font-size: 14pt;
-}
-.center {
-  justify-content: center;
-  width: 250px;
-  height: 250px;
-  position: absolute;
-  z-index: 5;
-}
 .flex {
   display: flex;
-  height: 300px;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 3vh;
+  border: 1px solid #1e8feb;
+  margin-left: 40%;
+  margin-right: 40%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-.pie {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  z-index: 2;
-  flex-shrink: 0;
-}
-.space {
-  padding: 5px;
-}
-.points {
-  font-weight: bold;
-  text-align: center;
+.user {
   font-size: 25pt;
 }
-.bigNumber {
+.points {
   color: #1e8feb;
   margin-left: 10px;
+  font-weight: bold;
+  font-size: 25pt;
+  justify-content: center;
 }
-.flex2 {
-  display: flex;
+.title {
+  font-size: 27pt;
+  justify-content: center;
 }
 .menu-container {
  color: #fff;
@@ -106,7 +62,6 @@ html { font-family: 'Inter', sans-serif; }
   color: white;
   font-size: 20pt;
   font-weight: bold;
-  margin-right: 25px;
   text-decoration: none;
   border: 3px solid white;
   border-radius: 10px;

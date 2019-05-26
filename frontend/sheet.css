@@ -7,6 +7,8 @@ html { font-family: 'Inter', sans-serif; }
   text-align: center;
   font-weight: bold;
   color: #1e8feb;
+  font-size: 15pt;
+  margin-top: 0px;
 }
 .flex {
   display: flex;
@@ -49,10 +51,10 @@ html { font-family: 'Inter', sans-serif; }
   text-decoration: none;
   color: white;
   padding: 5px;
-  border-radius: 15px;
+  border-radius: 10px;
   height: auto;
   width: auto;
-  font-size: 15pt;
+  font-size: 20pt;
   margin: 0 10px;
 }
 .links {
@@ -62,4 +64,16 @@ html { font-family: 'Inter', sans-serif; }
 
 .login {
   margin-left: 20px;
+}
+.top {
+  justify-content: center;
+  color: white;
+  font-size: 20pt;
+  font-weight: bold;
+  text-decoration: none;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.taskboard {
 }
