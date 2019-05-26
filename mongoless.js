@@ -46,7 +46,7 @@ app.get('/profile', (req, res) => {
             user: {
                 level: 1,
                 name: 'Johna Morandaons',
-                points: 100,
+                points: 4287,
                 watts: 124,
                 rank: 2521,
                 oldRank: 21894,

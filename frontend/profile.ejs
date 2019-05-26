@@ -6,11 +6,16 @@
     <link href=/style.css rel=stylesheet type=text/css>
   </head>
   <body>
+    <script type="text/javascript">
+      let exp = <%= user.points %> / 6000;
+      var myElement = document.querySelector(".pie");
+      myElement.style.backgroundimage = "linear-gradient(to top, transparent 29%, #1e8feb 0);";
+    </script>
     <div class="menu-container">
       <div class="menu">
         <div class="links">
-        <a class='navigation'href="#">Dashboard</a>
-        <a class='navigation'href="#">Profile</a>
+        <a class='navigation'href="/dashboard">Dashboard</a>
+        <a class='navigation'href="/profile">Profile</a>
       </div>
       <a class="login navigation"href="#">Sign In</a>
     </div>
@@ -22,8 +27,8 @@
       <img class='center' src="<%= user.profileImgUrl %>" alt="Your account information">
       <div class="pie"></div>
     </div>
-    <div class=points> <div class="bigNumber">100</div>Points</div>
-    <h1><%= user.name %></h1>
+    <div class=points> <div class="bigNumber"><%= user.points %></div>Points</div>
+    <h1 class="level"><%= user.name %></h1>
     <div class="stats">
         You have <div class=numbers><%= user.points %></div> points
     </div>

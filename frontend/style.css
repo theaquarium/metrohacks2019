@@ -47,7 +47,7 @@ html { font-family: 'Inter', sans-serif; }
   border-radius: 50%;
   background: grey;
   background-image:
-  linear-gradient(to top, transparent 90%, #1e8feb 0);
+  linear-gradient(to top, transparent 29%, #1e8feb 0);
   justify-content: center;
   position: absolute;
   z-index: 2;
