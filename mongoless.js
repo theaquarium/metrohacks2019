@@ -50,7 +50,7 @@ app.get('/profile', (req, res) => {
                 watts: 124,
                 rank: 2521,
                 oldRank: 21894,
-                profileImgUrl: "http://www.transparentpng.com/thumb/circle-png/n7wq5b-circle-transparent-background.png",
+                profileImgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png",
             },
         }
     );
