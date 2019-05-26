@@ -10,25 +10,29 @@
     <div class="menu-container">
       <div class="menu">
         <div class="links">
-        <a class='top'href="/dashboard">Dashboard</a>
         <a class='navigation'href="/profile">Profile</a>
+        <a class='top'href="/dashboard">Dashboard</a>
         <a class="navigation"href="/leaderboard">Leaderboard</a>
         </div>
       <p class="top navigation" href="#">Climate Connections</p>
-      <a class="navigation"href="#">Sign In</a>
+      <a class="navigation"href="/sign-in">Sign In</a>
     </div>
     </div>
 
       <div class="box1">
-        <p class="title">Graph</p>
-        <div class="flex taskboard">
-        </div>
+        <p class="title">Power Strip Current</p>
+        <div class="amp"><%= current %>A</div>
+        <div class="subtext">(Updates once every 10 seconds)</div>
       </div>
       <div class="box2">
-        <p class="title">Graph</p>
-      </div>
-      <div class="box3">
-        <p class="title">More Graph</p>
+        <p class="title">Tips</p>
+        <div class="flex taskboard">
+          <ul class="list">
+            <li>Don't leave lights on</li>
+            <li>Your phone does not ALWAYS have to be at 100%!</li>
+            <li>Try to turn down brightness on electronics to save electricity!</li>
+            <li>Earn as many points as possible by using less electricity!</li>
+        </div>
       </div>
   </body>
 </html>

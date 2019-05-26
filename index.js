@@ -11,6 +11,7 @@ let google_to_id = {};
 let events = [];
 let hourlyPower = [];
 let powerstripCounter = 0;
+let current = 0;
 
 users = JSON.parse(fs.readFileSync('climateconnections_users.json'));
 google_to_id = JSON.parse(fs.readFileSync('climateconnections_googletoid.json'));
@@ -27,7 +28,7 @@ app.use(session({
         maxAge: 1000 * 60 * 24,
     }
 }));
-    
+
 app.get('/', (req, res) => {
     res.redirect('/sign-in');
 });
@@ -48,8 +49,9 @@ app.post('/report-powerstrip', (req, res) => {
                 if (err) throw err;
                 console.log('Events Saved');
             });
-            userData.latestReading = json.current;
+            current = json.current;
             users[json.id] = userData;
+            console.log(users[json.id]);
             res.sendStatus(200);
             powerstripCounter++;
             if (powerstripCounter == 360) {
@@ -94,8 +96,8 @@ app.post('/verify-user', (req, res) => {
                 name: json.name,
                 email: json.email,
                 profileImgUrl: json.imgUrl,
-                points: 0,
-                levelpoints: 0,
+                points: 14,
+                levelpoints: 14,
                 friends: {},
             };
             fs.writeFile('climateconnections_users.json', JSON.stringify(users), (err) => {
@@ -135,9 +137,10 @@ app.get('/dashboard', (req, res) => {
     if (userId && userToken) {
         const userData = users[userId];
         if (userData.token == userToken) {
+            console.log('dsad', userData);
             res.render(path.resolve('./frontend/dash.ejs'),
                 {
-                    user: userData,
+                    current,
                 });
         }
     } else {
@@ -169,6 +172,10 @@ app.get('/leaderboard', (req, res) => {
         {
             topTen,
         });
+});
+
+app.get('/leaderboard', (req, res) => {
+  res.sendFile(path.resolve('./frontend/leader.html'));
 });
 
 app.get('/report-compostedtoday', (req, res) => {
@@ -220,7 +227,7 @@ app.get('/report-zerowasteday', (req, res) => {
                 };
                 events.push(event);
                 fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
-                    if (err) throw err;
+                    if (err) throw err;2019
                     console.log('Events Saved');
                 });
                 const newUser = utils.addZeroWastePoints(userData);
