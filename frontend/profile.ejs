@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Climate Connections</title>
     <link href=/style.css rel=stylesheet type=text/css>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
     <div class="menu-container">
@@ -12,7 +13,7 @@
         <a class='navigation'href="/dashboard">Dashboard</a>
         <a class='navigation'href="/profile">Profile</a>
       </div>
-      <a class="login navigation"href="#">Sign In</a>
+      <a class="login navigation" href="#" onclick="signOut();">Sign Out</a>
     </div>
     </div>
 
@@ -24,16 +25,17 @@
     </div>
     <h1 class="level"><%= user.name %></h1>
     <div class=points> <div class="bigNumber"><%= user.points %></div>Points</div>
-    <div class="stats">
-        You used <div class="numbers"><%= user.watts %></div> Watts today
-    </div>
-    <div class="stats">
-        You moved up <div class="numbers"><%= user.oldRank - user.rank %></div>spots to rank<div class=numbers><%= user.rank %></div>
-    </div>
-    <script deferS>
+   <script defer>
       let exp = 100 - (<%= user.levelpoints %> / (50*2^<%= user.level %>))*100;
       var pie = document.getElementsByClassName("pie")[0];
       pie.style.background = "linear-gradient(to top, gray " + exp + "%, #1e8feb 0)";
+
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      }
     </script>
   </body>
 </html>

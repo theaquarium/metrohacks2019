@@ -1,13 +1,23 @@
 <html lang="en">
   <head>
-    <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="127106755738-6anilqcl7g4r1qrohiigrnmorh6s2q48.apps.googleusercontent.com">
+    <meta name="google-signin-scope" content="profile email">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" href="signstyle.css">
   </head>
   <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
+    <div class="menu-container">
+      <div class="menu">
+        <div class="links">
+          <a class='navigation'href="/dashboard">Dashboard</a>
+          <a class='navigation'href="/profile">Profile</a>
+        </div>
+      <a class="login navigation"href="#">Sign In</a>
+      </div>
+    </div>
+    <div class="centered">
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-longtitle="true" data-width="250" data-height="60"></div>
+    </div>
     <script>
       function onSignIn(googleUser) {
         const profile = googleUser.getBasicProfile();
@@ -31,12 +41,6 @@
           console.log(response.headers.location)
           window.location = '/profile';
         });
-      }
-      function signOut() {
-          var auth2 = gapi.auth2.getAuthInstance();
-          auth2.signOut().then(function () {
-            console.log('User signed out.');
-          });
       }
     </script>
   </body>
