@@ -27,7 +27,7 @@ app.use(session({
         maxAge: 1000 * 60 * 24,
     }
 }));
-    
+
 app.get('/', (req, res) => {
     res.redirect('/sign-in');
 });
@@ -142,6 +142,10 @@ app.get('/dashboard', (req, res) => {
         res.location('/sign-in');
     } */
     res.sendFile(path.resolve('./frontend/dash.html'));
+});
+
+app.get('/leaderboard', (req, res) => {
+  res.sendFile(path.resolve('./frontend/leader.html'));
 });
 
 app.get('/report-compostedtoday', (req, res) => {

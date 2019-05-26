@@ -75,5 +75,6 @@ html { font-family: 'Inter', sans-serif; }
   border-radius: 10px;
   padding: 5px;
 }
-.taskboard {
+.list {
+  font-size: 15pt;
 }

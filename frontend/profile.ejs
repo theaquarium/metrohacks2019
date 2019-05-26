@@ -27,6 +27,9 @@
     </div>
     <h1 class="level"><%= user.name %></h1>
     <div class=points> <div class="bigNumber"><%= user.points %></div>Points</div>
+    <div class="stats">
+      <div>You are using <div class="numbers"><%= user.amps %></div>amps every 10 seconds.</div>
+    </div>
    <script defer>
       let exp = 100 - (<%= user.levelpoints %> / (50*2^<%= user.level %>))*100;
       var pie = document.getElementsByClassName("pie")[0];
