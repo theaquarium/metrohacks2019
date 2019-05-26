@@ -10,14 +10,16 @@
     <div class="menu-container">
       <div class="menu">
         <div class="links">
+        <a class='top'href="/profile">Profile</a>
         <a class='navigation'href="/dashboard">Dashboard</a>
-        <a class='navigation'href="/profile">Profile</a>
+        <a class="navigation"href="/leaderboard">Leaderboard</a>
       </div>
+      <p class="top navigation" href="#">Climate Connections</p>
       <a class="login navigation" href="#" onclick="signOut();">Sign Out</a>
     </div>
     </div>
 
-    <h1 class=level>Level <%= user.level %></h1>
+    <h1 class=level>Level <div class="bigNumber"><%= user.level %></div></h1>
     <div class="space"></div>
     <div class=flex>
       <img class='center' src="<%= user.profileImgUrl %>" alt="Your account information">

@@ -5,6 +5,8 @@ html { font-family: 'Inter', sans-serif; }
 }
 .level {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 .centerimg {
   display: block;
@@ -63,6 +65,7 @@ html { font-family: 'Inter', sans-serif; }
 }
 .bigNumber {
   color: #1e8feb;
+  margin-left: 10px;
 }
 .flex2 {
   display: flex;
@@ -84,10 +87,10 @@ html { font-family: 'Inter', sans-serif; }
   text-decoration: none;
   color: white;
   padding: 5px;
-  border-radius: 15px;
+  border-radius: 10px;
   height: auto;
   width: auto;
-  font-size: 15pt;
+  font-size: 20pt;
   margin: 0 10px;
 }
 .links {
@@ -103,4 +106,9 @@ html { font-family: 'Inter', sans-serif; }
   color: white;
   font-size: 20pt;
   font-weight: bold;
+  margin-right: 25px;
+  text-decoration: none;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 5px;
 }
