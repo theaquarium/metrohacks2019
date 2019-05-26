@@ -8,9 +8,11 @@ const port = 5849;
 
 let users = {};
 let google_to_id = {};
+let events = [];
 
 users = JSON.parse(fs.readFileSync('climateconnections_users.json'));
 google_to_id = JSON.parse(fs.readFileSync('climateconnections_googletoid.json'));
+events = JSON.parse(fs.readFileSync('climateconnections_events.json'));
 
 app.use(express.json());
 app.set('view engine', 'ejs');
@@ -29,8 +31,22 @@ app.get('/', (req, res) => {
 
 app.post('/report-powerstrip', (req, res) => {
     const json = req.body;
-    console.log(json);
-    res.sendStatus(200);
+    if (json) {
+        const userData = users[json.id];
+        if (userData.token == json.token) {
+            const event = {
+                "event_type": "powerstrip",
+                "current": json.current,
+                "id": json.id,
+            };
+            events.push(event);
+            fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
+                if (err) throw err;
+                console.log('Events Saved');
+            });
+            res.sendStatus(200);
+        }
+    }
 });
 
 app.get('/sign-in', (req, res) => {
@@ -81,18 +97,77 @@ app.post('/verify-user', (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-    console.log('1');
     const userId = req.session.uid;
     const userToken = req.session.token;
     if (userId && userToken) {
-        console.log('2');
         const userData = users[userId];
         if (userData.token == userToken) {
-            console.log('3');
             res.render(path.resolve('./frontend/profile.ejs'),
                 {
                     user: userData,
                 });
+        }
+    } else {
+        res.location('/sign-in');
+    }
+});
+
+app.get('/dashboard', (req, res) => {
+    const userId = req.session.uid;
+    const userToken = req.session.token;
+    if (userId && userToken) {
+        const userData = users[userId];
+        if (userData.token == userToken) {
+            res.render(path.resolve('./frontend/profile.ejs'),
+                {
+                    user: userData,
+                });
+        }
+    } else {
+        res.location('/sign-in');
+    }
+});
+
+app.get('/report-compostedtoday', (req, res) => {
+    const userId = req.session.uid;
+    const userToken = req.session.token;
+    if (userId && userToken) {
+        const userData = users[userId];
+        if (userData.token == userToken) {
+            const event = {
+                "event_type": "compostedtoday",
+                "date": new Date().toISOString().substring(0, 10),
+                "id": json.id,
+            };
+            events.push(event);
+            fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
+                if (err) throw err;
+                console.log('Events Saved');
+            });
+            res.sendStatus(200);
+        }
+    } else {
+        res.location('/sign-in');
+    }
+});
+
+app.get('/report-zerowasteday', (req, res) => {
+    const userId = req.session.uid;
+    const userToken = req.session.token;
+    if (userId && userToken) {
+        const userData = users[userId];
+        if (userData.token == userToken) {
+            const event = {
+                "event_type": "zerowasteday",
+                "date": new Date().toISOString().substring(0, 10),
+                "id": json.id,
+            };
+            events.push(event);
+            fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
+                if (err) throw err;
+                console.log('Events Saved');
+            });
+            res.sendStatus(200);
         }
     } else {
         res.location('/sign-in');
