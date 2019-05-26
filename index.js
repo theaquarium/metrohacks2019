@@ -134,17 +134,21 @@ app.get('/report-compostedtoday', (req, res) => {
     if (userId && userToken) {
         const userData = users[userId];
         if (userData.token == userToken) {
-            const event = {
-                "event_type": "compostedtoday",
-                "date": new Date().toISOString().substring(0, 10),
-                "id": json.id,
-            };
-            events.push(event);
-            fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
-                if (err) throw err;
-                console.log('Events Saved');
-            });
-            res.sendStatus(200);
+            if (utils.checkForEventOnDate) {
+                const event = {
+                    "event_type": "compostedtoday",
+                    "date": new Date().toISOString().substring(0, 10),
+                    "id": userId,
+                };
+                events.push(event);
+                fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
+                    if (err) throw err;
+                    console.log('Events Saved');
+                });
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(500);
+            }
         }
     } else {
         res.location('/sign-in');
@@ -157,17 +161,21 @@ app.get('/report-zerowasteday', (req, res) => {
     if (userId && userToken) {
         const userData = users[userId];
         if (userData.token == userToken) {
-            const event = {
-                "event_type": "zerowasteday",
-                "date": new Date().toISOString().substring(0, 10),
-                "id": json.id,
-            };
-            events.push(event);
-            fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
-                if (err) throw err;
-                console.log('Events Saved');
-            });
-            res.sendStatus(200);
+            if (utils.checkForEventOnDate) {
+                const event = {
+                    "event_type": "zerowasteday",
+                    "date": new Date().toISOString().substring(0, 10),
+                    "id": userId,
+                };
+                events.push(event);
+                fs.writeFile('climateconnections_events.json', JSON.stringify(events), (err) => {
+                    if (err) throw err;
+                    console.log('Events Saved');
+                });
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(500);
+            }
         }
     } else {
         res.location('/sign-in');
