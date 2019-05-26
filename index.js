@@ -48,6 +48,8 @@ app.post('/report-powerstrip', (req, res) => {
                 if (err) throw err;
                 console.log('Events Saved');
             });
+            userData.latestReading = json.current;
+            users[json.id] = userData;
             res.sendStatus(200);
             powerstripCounter++;
             if (powerstripCounter == 360) {
@@ -128,20 +130,45 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/dashboard', (req, res) => {
-    /* const userId = req.session.uid;
+    const userId = req.session.uid;
     const userToken = req.session.token;
     if (userId && userToken) {
         const userData = users[userId];
         if (userData.token == userToken) {
-            res.render(path.resolve('./frontend/dashboard.html'),
+            res.render(path.resolve('./frontend/dash.ejs'),
                 {
                     user: userData,
                 });
         }
     } else {
         res.location('/sign-in');
-    } */
-    res.sendFile(path.resolve('./frontend/dash.html'));
+    }
+});
+
+app.get('/leaderboard', (req, res) => {
+    let pairs = {};
+    Object.values(users).forEach(user => {
+        pairs[user.points] = user;
+    });
+    const sortedKeys = Object.keys(pairs).sort(function(a, b) {
+        return b - a;
+    });
+    let topTen = [];
+    for (let i = 0; i < 10; i++) {
+        topTen.push(pairs[sortedKeys[i]]);
+    }
+    while (topTen.length < 10) {
+        topTen.push(
+            { 
+                'name': '',
+                'points': '',
+            });
+    }
+    console.log('tsf', topTen);
+    res.render(path.resolve('./frontend/leader.ejs'),
+        {
+            topTen,
+        });
 });
 
 app.get('/report-compostedtoday', (req, res) => {
