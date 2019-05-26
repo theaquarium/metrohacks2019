@@ -98,3 +98,9 @@ html { font-family: 'Inter', sans-serif; }
 .login {
   margin-left: 20px;
 }
+.top {
+  justify-content: center;
+  color: white;
+  font-size: 20pt;
+  font-weight: bold;
+}
