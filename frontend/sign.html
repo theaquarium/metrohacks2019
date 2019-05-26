@@ -16,16 +16,20 @@
           name: profile.getName(),
           email: profile.getEmail(),
           imgUrl: profile.getImageUrl(),
-          token: id_token,
+          google_token: id_token,
         };
-        console.log(JSON.stringify(data));
+        console.log('dude');
         fetch('/verify-user', {
           method: 'POST',
-          content
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(data),
         })
         .then(response => {
           console.log(response.status);
+          console.log(response.headers.location)
+          window.location = '/profile';
         });
       }
       function signOut() {
